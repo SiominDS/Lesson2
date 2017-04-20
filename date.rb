@@ -1,26 +1,25 @@
-date = { :"January" => 31, :"February" => 28, :"March" => 31, :"April" => 30,
-          :"May" => 31, :"June" => 30, :"July" => 31, :"August" => 31,
-          :"September" => 30, :"October" => 31, :"November" => 30, :"December" => 31 }
+months = { :'01' => 31, :'02' => 28, :'03' => 31, :'04' => 30,
+          :'05' => 31, :'06' => 30, :'07' => 31, :'08' => 31,
+          :'09' => 30, :'10' => 31, :'11' => 30, :'12' => 31 }
 puts "Enter year"
 year = gets.chomp
 
-if (((year.to_i % 4 == 0) & (year.to_i % 100 != 0)) || ( year.to_i % 400 == 0))
-  date[:"February"] = 29
+if ((year.to_i % 4 == 0) & (year.to_i % 100 != 0)) || ( year.to_i % 400 == 0)
+  months[:'02'] = 29
 end
 
 puts "Enter month"
 month = gets.chomp
 puts "Enter day"
 day = gets.chomp
-day_number = 0
+day_number = day.to_i
+#текущая дата будет использована как начальное значение для числа дней
+months.each do |month_hash,days|
 
-date.each do |month_hash,days|
-
-  if month_hash.to_s != month
-    day_number = day_number + date[month_hash]
+  if month_hash.to_s != month.to_s
+    day_number += days
   else break
   end
 
 end
-day_number = day_number + day.to_i
 puts day_number
