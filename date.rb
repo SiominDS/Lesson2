@@ -1,26 +1,24 @@
-date = { :"January" => 31, :"February" => 28, :"March" => 31, :"April" => 30,
-          :"May" => 31, :"June" => 30, :"July" => 31, :"August" => 31,
-          :"September" => 30, :"October" => 31, :"November" => 30, :"December" => 31 }
+months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 puts "Enter year"
 year = gets.chomp
 
-if (((year.to_i % 4 == 0) & (year.to_i % 100 != 0)) || ( year.to_i % 400 == 0))
-  date[:"February"] = 29
+if ((year.to_i % 4 == 0) & (year.to_i % 100 != 0)) || ( year.to_i % 400 == 0)
+  months[1] = 29
 end
 
 puts "Enter month"
-month = gets.chomp
+month = gets.chomp.to_i
 puts "Enter day"
-day = gets.chomp
-day_number = 0
+day = gets.chomp.to_i
+day_number = day
+i = 1 #Чтобы не возиться с индексами массива.
+months.each do |number|
 
-date.each do |month_hash,days|
-
-  if month_hash.to_s != month
-    day_number = day_number + date[month_hash]
+  if i < month
+    day_number += number
+    i += 1
   else break
   end
 
 end
-day_number = day_number + day.to_i
 puts day_number
