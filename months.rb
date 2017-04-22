@@ -3,8 +3,6 @@ months = { "January" => 31, "February" => 28, "March" => 31, "April" => 30,
           "September" => 30, "October" => 31, "November" => 30, "December" => 31 }
 months.each do |month,days|
 
-  if months[month] == 30
-    puts "#{month} 30 days"
-  end
-  
+  puts "#{month} 30 days" if months[month] == 30
+
 end
